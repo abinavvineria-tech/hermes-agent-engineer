@@ -98,6 +98,14 @@ Set `gateway.standalone: true` in the profile's `config.yaml`, then wait for the
 - Do NOT run `hermes -p everlily gateway install --force` unless the profile is on a separate UNIX user or HERMES_HOME outside profiles/.
 - Do not install a separate per-profile gateway on the same host — it will double-bind platforms.
 
+## Publishing Skills to GitHub
+
+Reusable skills can be published as separate public GitHub repositories. Use the `git-repo-publishing` skill for the full procedure (`git init`, commit, `gh repo create --public --source=. --remote=origin --push`, verify remote and clean tree).
+
+### Publishing pitfalls
+
+- Publishing multiple repos in a batch: space out `gh repo create` calls — GitHub enforces a separate anti-spam limit on repository creation velocity, independent of the general API rate limit, and rejects creates with "too many repositories, too quickly" until the cooldown passes.
+
 ## Example
 
 ```
